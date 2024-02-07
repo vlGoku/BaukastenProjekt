@@ -6,7 +6,8 @@ class Salad extends Food {
     super(
       "salad",
       6.3,
-      ["Romaine", "Lollo Rosso", "Radicchio", "Baby Spinach"],
+      //Potato Salad, Pasta Salad, Leaf lettuce, Bird's Salad added
+      ["Romaine", "Lollo Rosso", "Radicchio", "Baby Spinach", "Potato Salad", "Pasta Salad", "Leaf lettuce", "Bird's Salad"],
       [
         "Carrots",
         "Cucumbers",
@@ -24,7 +25,7 @@ class Salad extends Food {
         "Pumpkin-Seed Oil and Apple Cider Vinegar",
         "French Dressing",
         "Yoghurt Dressing",
-      ]
+      ],
     );
   }
   createBase(parent: HTMLElement) {

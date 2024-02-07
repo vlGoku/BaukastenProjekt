@@ -37,7 +37,7 @@ function createMenu() {
     "menuDescription",
     `Welcome to Ristorante con Kit di Costruzione!</br> Where you can pick and choose your ingredients.</br>
     At first you choose one base, then you can add your ingredients of choice.</br>Up to five Ingredients are included in the base price</br>
-    Every other adds an charge of 1,50 to price</br>After that you get to choose what type of sauce/condiment you would like.</br>
+    Every other adds a charge of 1,50 to price</br>After that you get to choose what type of sauce/condiment you would like.</br>
     Enjoy and happy ordering!`
   );
   const choice = createTag(menu, "div", null, null, null);

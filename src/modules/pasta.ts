@@ -7,13 +7,17 @@ class Pasta extends Food {
       "pasta",
       8.5,
       ["Fusilli", "Penne", "Farfalle", "Spaghetti", "Tagliatelle", "Rigatoni"],
+      //Pumpkin, Lenses, Jalapeno added
       [
         "Onion",
         "Garlic",
         "Bell Pepper",
         "Pepperoni",
         "Corn",
+        "Lenses",
         "Mushrooms",
+        "Pumpkin",
+        "Jalapeno",
         "Zucchini",
         "Spinach",
         "Olives",
@@ -25,7 +29,8 @@ class Pasta extends Food {
         "Parmesan",
         "Gorgonzola",
       ],
-      ["Tomato Sauce", "Cream Sauce"]
+      //Olive Oil added
+      ["Tomato Sauce", "Cream Sauce", "Olive Oil"]
     );
   }
   createBase(parent: HTMLElement) {

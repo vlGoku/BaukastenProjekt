@@ -8,12 +8,16 @@ class Pizza extends Food {
       "pizza",
       9.7,
       ["Wheat", "Whole Grain"],
+      //Olives, Pumpkin, Broccoli added
       [
         "Onion",
         "Garlic",
         "Bell Pepper",
         "Pepperoni",
         "Corn",
+        "Olives",
+        "Broccoli",
+        "Pumpkin",
         "Mushrooms",
         "Zucchini",
         "Fried Egg",
