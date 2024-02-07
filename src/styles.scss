@@ -1,0 +1,24 @@
+$primary-color: white;
+$bg: black;
+/* ------ General ------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  text-align: center;
+
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.hidden {
+  display: none;
+}
+
+/* ------ Mobile ------ */
+
+/* ------ Desktop ------ */
+
+@import "./scss/header";
+@import "./scss/menu";
+@import "./scss/cart";
+@import "./scss/footer";

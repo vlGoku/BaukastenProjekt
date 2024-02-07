@@ -1,0 +1,105 @@
+.menu {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  h2 {
+    padding: 2em;
+  }
+  li {
+    list-style-type: none;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  // .button {
+  //   padding: 1em;
+  //   margin: 1em;
+  // }
+}
+.displayItem {
+  border-radius: 20px;
+  background-color: #b6b3b3c8;
+  color: #696666;
+  margin-left: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  width: 75%;
+  height: fit-content;
+  font-size: smaller;
+}
+
+.pizzaHeading,
+.pastaHeading,
+.saladHeading,
+.drinkHeading {
+  display: flex;
+  margin-top: 1em;
+  flex-direction: row;
+  justify-content: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  background-color: darkgoldenrod;
+
+  color: white;
+}
+.ingredientsPizza,
+.ingredientsPasta,
+.ingredientsSalad {
+  padding-top: 1em;
+  padding-bottom: 2em;
+  padding-left: 20%;
+  padding-right: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  .displayItem {
+    grid-column: 2;
+  }
+}
+.base {
+  grid-column: 1;
+}
+.IngredList {
+  display: grid;
+  grid-column: 2fr 1fr;
+  ul {
+    grid-column: 1;
+  }
+  li {
+    grid-column: 2;
+
+    display: flex;
+    justify-content: space-between;
+    float: left;
+  }
+}
+
+.btnPizza,
+.btnPasta,
+.btnSalad,
+.btnDrink {
+  border: none;
+  font-size: larger;
+  background-color: transparent;
+  color: rgba(252, 252, 252, 0.517);
+  padding: none;
+  margin-top: -5px;
+}
+.btnPizza:hover,
+.btnPasta:hover,
+.btnSalad:hover {
+  color: rgb(255, 255, 255);
+}
+//todo change to grid
+.drinkDisplay {
+  display: flex;
+  justify-content: center;
+  p {
+    margin: 1em;
+  }
+  button {
+    margin: 1em;
+    height: fit-content;
+  }
+}
