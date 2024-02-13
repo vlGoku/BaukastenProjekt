@@ -1,3 +1,10 @@
+button {
+  cursor: pointer;
+  i {
+    pointer-events: none;
+  }
+}
+
 .menu {
   background-color: #fafafa;
   display: flex;
@@ -103,3 +110,4 @@
     height: fit-content;
   }
 }
+

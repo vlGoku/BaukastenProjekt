@@ -15,9 +15,6 @@ class Pizza extends Food {
         "Bell Pepper",
         "Pepperoni",
         "Corn",
-        "Olives",
-        "Broccoli",
-        "Pumpkin",
         "Mushrooms",
         "Zucchini",
         "Fried Egg",
@@ -31,6 +28,9 @@ class Pizza extends Food {
         "Parmesan",
         "Blue Cheese",
         "Cheddar",
+        "Olives",
+        "Pumpkin",
+        "Broccoli",
       ],
       ["Tomato Sauce", "White Sauce"]
     );
@@ -288,6 +288,21 @@ class Pizza extends Food {
         this.addIngredients(this.getAddOns()[17]);
       if (currentTarget!.matches(".removeCheddar"))
         this.removeIngredients(this.getAddOns()[17]);
+      //Olives
+      if (currentTarget!.matches(".addOlives"))
+        this.addIngredients(this.getAddOns()[18]);
+      if (currentTarget!.matches(".removeOlives"))
+        this.removeIngredients(this.getAddOns()[18]);
+      //Pumpkin
+      if (currentTarget!.matches(".addPumpkin"))
+        this.addIngredients(this.getAddOns()[19]);
+      if (currentTarget!.matches(".removePumpkin"))
+        this.removeIngredients(this.getAddOns()[19]);
+      //Broccoli
+      if (currentTarget!.matches(".addBroccoli"))
+        this.addIngredients(this.getAddOns()[20]);
+      if (currentTarget!.matches(".removeBroccoli"))
+        this.removeIngredients(this.getAddOns()[20]);
       this.updateItem(parent);
       console.log(this.allComponents);
     });
