@@ -95,6 +95,15 @@ function createMenu() {
   );
   const wrapPasta = createTag(choice, "div", null, "ingredientsPasta", null);
   pasta.createItems(wrapPasta);
+
+  const buttonPasta = createTag(
+    choice,
+    "button",
+    `pastaToCartBtn"`,
+    null,
+    "Add to cart"
+  );
+
   wrapPasta.classList.add("hidden");
   wrapPasta.classList.remove("ingredientsPasta");
   //button Pasta
@@ -107,13 +116,6 @@ function createMenu() {
       wrapPasta.classList.remove("ingredientsPasta");
     }
   });
-  const buttonPasta = createTag(
-    choice,
-    "button",
-    `pastaToCartBtn"`,
-    null,
-    "Add to cart"
-  );
   buttonPasta!.addEventListener("click", () => {
     const display = document.querySelector(".displayItem");
     display?.remove();

@@ -55,9 +55,9 @@ class Pasta extends Food {
     let getNameIndex = 0;
     while (nextSibling !== null) {
       const tag = document.createElement("div");
-      tag.innerHTML = `<button class="base${
-        this.getBase()[getNameIndex]
-      }"><i class="fa-solid fa-plus"></i></button>`;
+      tag.innerHTML = `<button class="base${this.getBase()[
+        getNameIndex
+      ].replace(/ /g, "_")}"><i class="fa-solid fa-plus"></i></button>`;
       nextSibling?.appendChild(tag);
       nextSibling = nextSibling!.nextSibling;
       getNameIndex++;
@@ -105,7 +105,7 @@ class Pasta extends Food {
         next?.classList.remove("hidden");
         base.remove();
       }
-      console.log(this.allComponents);
+      //console.log(this.allComponents);
     });
   }
   createMustHaves(parent: HTMLElement) {
@@ -162,7 +162,7 @@ class Pasta extends Food {
 
       this.updateItem(parent);
 
-      console.log(this.allComponents);
+      //console.log(this.allComponents);
     });
   }
   createAddOns(parent: HTMLElement) {
@@ -297,7 +297,7 @@ class Pasta extends Food {
         this.addIngredients(this.getAddOns()[15]);
       if (currentTarget!.matches(".removeGorgonzola"))
         this.removeIngredients(this.getAddOns()[15]);
-      console.log(this.allComponents);
+      //console.log(this.allComponents);
     });
   }
   updateItem(parent: HTMLElement) {

@@ -71,6 +71,7 @@ class Pizza extends Food {
 
     baseList.addEventListener("click", (e) => {
       // TODO was working fine now sometimes you have to click more then once
+      //Problem solved
       let currentTarget = e.target as HTMLButtonElement;
 
       if (currentTarget!.matches(".baseWheat")) {
@@ -85,7 +86,7 @@ class Pizza extends Food {
         next?.classList.remove("hidden");
         base.remove();
       }
-      console.log(this.allComponents);
+      //console.log(this.allComponents);
     });
   }
   createMustHaves(parent: HTMLElement) {
@@ -143,7 +144,7 @@ class Pizza extends Food {
 
       this.updateItem(parent);
 
-      console.log(this.allComponents);
+      //console.log(this.allComponents);
     });
   }
   createAddOns(parent: HTMLElement) {
@@ -224,9 +225,9 @@ class Pizza extends Food {
       if (currentTarget!.matches(".removeCorn"))
         this.removeIngredients(this.getAddOns()[4]);
       //Mushroom
-      if (currentTarget!.matches(".addMushroom"))
+      if (currentTarget!.matches(".addMushrooms"))
         this.addIngredients(this.getAddOns()[5]);
-      if (currentTarget!.matches(".removeMushroom"))
+      if (currentTarget!.matches(".removeMushrooms"))
         this.removeIngredients(this.getAddOns()[5]);
       //Zucchini
       if (currentTarget!.matches(".addZucchini"))
@@ -304,7 +305,7 @@ class Pizza extends Food {
       if (currentTarget!.matches(".removeBroccoli"))
         this.removeIngredients(this.getAddOns()[20]);
       this.updateItem(parent);
-      console.log(this.allComponents);
+      //console.log(this.allComponents);
     });
   }
   updateItem(parent: HTMLElement) {
