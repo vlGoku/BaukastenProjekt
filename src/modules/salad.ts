@@ -88,6 +88,31 @@ class Salad extends Food {
         next?.classList.remove("hidden");
         base.remove();
       }
+      if (currentTarget!.matches(".basePotatoSalad")) {
+        this.addIngredients("Potato Salad");
+        const next = document.getElementById("saladAddOns");
+        next?.classList.remove("hidden");
+        base.remove();
+      }
+      if (currentTarget!.matches(".basePastaSalad")) {
+        this.addIngredients("Pasta Salad");
+        const next = document.getElementById("saladAddOns");
+        next?.classList.remove("hidden");
+        base.remove();
+      }
+      if (currentTarget!.matches(".baseLeafLettuce")) {
+        this.addIngredients("Leaf lettuce");
+        const next = document.getElementById("saladAddOns");
+        next?.classList.remove("hidden");
+        base.remove();
+      }
+      if (currentTarget!.matches(".baseBirdsSalad")) {
+        this.addIngredients("Bird's Salad");
+        const next = document.getElementById("saladAddOns");
+        next?.classList.remove("hidden");
+        base.remove();
+      }
+      
       console.log(this.allComponents);
     });
   }
