@@ -7,7 +7,16 @@ class Salad extends Food {
       "salad",
       6.3,
       //Potato Salad, Pasta Salad, Leaf lettuce, Bird's Salad added
-      ["Romaine", "Lollo Rosso", "Radicchio", "Baby Spinach", "Potato Salad", "Pasta Salad", "Leaf lettuce", "Bird's Salad"],
+      [
+        "Romaine",
+        "Lollo Rosso",
+        "Radicchio",
+        "Baby Spinach",
+        "Potato Salad",
+        "Pasta Salad",
+        "Leaf lettuce",
+        "Birds Salad",
+      ],
       [
         "Carrots",
         "Cucumbers",
@@ -25,7 +34,7 @@ class Salad extends Food {
         "Pumpkin-Seed Oil and Apple Cider Vinegar",
         "French Dressing",
         "Yoghurt Dressing",
-      ],
+      ]
     );
   }
   createBase(parent: HTMLElement) {
@@ -100,7 +109,7 @@ class Salad extends Food {
         next?.classList.remove("hidden");
         base.remove();
       }
-      if (currentTarget!.matches(".baseLeafLettuce")) {
+      if (currentTarget!.matches(".baseLeaflettuce")) {
         this.addIngredients("Leaf lettuce");
         const next = document.getElementById("saladAddOns");
         next?.classList.remove("hidden");
@@ -112,7 +121,7 @@ class Salad extends Food {
         next?.classList.remove("hidden");
         base.remove();
       }
-      
+
       console.log(this.allComponents);
     });
   }
@@ -283,8 +292,9 @@ class Salad extends Food {
         this.addIngredients(this.getAddOns()[9]);
       if (currentTarget!.matches(".removeOnion"))
         this.removeIngredients(this.getAddOns()[9]);
+      this.updateItem(parent);
 
-      console.log(this.allComponents);
+      //console.log(this.allComponents);
     });
   }
   updateItem(parent: HTMLElement) {

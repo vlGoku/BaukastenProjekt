@@ -1,7 +1,7 @@
 /* ------ General ------ */
 * {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   text-align: center;
   font-family: "M PLUS Rounded 1c", sans-serif;
@@ -20,8 +20,8 @@ header {
   display: grid;
   grid-template-columns: 80px 80% 1fr;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: white;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -46,7 +46,7 @@ header {
 .btnCartHead:hover {
   cursor: pointer;
   -webkit-transform: scale(1.5);
-          transform: scale(1.5);
+  transform: scale(1.5);
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
@@ -70,8 +70,8 @@ button i {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   min-height: 100vh;
 }
 .menu h2 {
@@ -109,11 +109,11 @@ button i {
   margin-top: 1em;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   padding-left: 20%;
   padding-right: 20%;
   background-color: darkgoldenrod;
@@ -153,8 +153,8 @@ button i {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   float: left;
 }
 
@@ -181,8 +181,8 @@ button i {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .drinkDisplay p {
   margin: 1em;
@@ -203,11 +203,11 @@ footer {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
 }
 footer li {
   list-style-type: none;
@@ -217,4 +217,4 @@ footer a {
   text-decoration: none;
   color: black;
   padding: 1em;
-}/*# sourceMappingURL=styles.css.map */
+} /*# sourceMappingURL=styles.css.map */

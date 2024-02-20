@@ -161,7 +161,7 @@ function createMenu() {
     const display = document.querySelector(".displayItem");
     display?.remove();
     console.log("zest");
-    cart.addToCart(pasta);
+    cart.addToCart(salad);
     salad.allComponents = [];
     console.log(cart.order);
     salad.createItems(wrapSalad);

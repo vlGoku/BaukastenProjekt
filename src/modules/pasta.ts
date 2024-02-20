@@ -242,61 +242,77 @@ class Pasta extends Food {
         this.addIngredients(this.getAddOns()[4]);
       if (currentTarget!.matches(".removeCorn"))
         this.removeIngredients(this.getAddOns()[4]);
-      //Mushroom
-      if (currentTarget!.matches(".addMushroom"))
+      //Lenses
+      if (currentTarget!.matches(".addLenses"))
         this.addIngredients(this.getAddOns()[5]);
-      if (currentTarget!.matches(".removeMushroom"))
+      if (currentTarget!.matches(".removeLenses"))
         this.removeIngredients(this.getAddOns()[5]);
+      //Mushrooms
+      if (currentTarget!.matches(".addMushrooms"))
+        this.addIngredients(this.getAddOns()[6]);
+      if (currentTarget!.matches(".removeMushrooms"))
+        this.removeIngredients(this.getAddOns()[6]);
+      //Pumpkin
+      if (currentTarget!.matches(".addPumpkin"))
+        this.addIngredients(this.getAddOns()[7]);
+      if (currentTarget!.matches(".removePumpkin"))
+        this.removeIngredients(this.getAddOns()[7]);
+      //Jalapeno
+      if (currentTarget!.matches(".addJalapeno"))
+        this.addIngredients(this.getAddOns()[8]);
+      if (currentTarget!.matches(".removeJalapeno"))
+        this.removeIngredients(this.getAddOns()[8]);
       //Zucchini
       if (currentTarget!.matches(".addZucchini"))
-        this.addIngredients(this.getAddOns()[6]);
+        this.addIngredients(this.getAddOns()[9]);
       if (currentTarget!.matches(".removeZucchini"))
-        this.removeIngredients(this.getAddOns()[6]);
+        this.removeIngredients(this.getAddOns()[9]);
       //Spinach
       if (currentTarget!.matches(".addSpinach"))
-        this.addIngredients(this.getAddOns()[7]);
+        this.addIngredients(this.getAddOns()[10]);
       if (currentTarget!.matches(".removeSpinach"))
-        this.removeIngredients(this.getAddOns()[7]);
+        this.removeIngredients(this.getAddOns()[10]);
       //Olives
       if (currentTarget!.matches(".addOlives"))
-        this.addIngredients(this.getAddOns()[8]);
+        this.addIngredients(this.getAddOns()[11]);
       if (currentTarget!.matches(".removeOlives"))
-        this.removeIngredients(this.getAddOns()[8]);
+        this.removeIngredients(this.getAddOns()[11]);
       //Basil
       if (currentTarget!.matches(".addBasil"))
-        this.addIngredients(this.getAddOns()[9]);
+        this.addIngredients(this.getAddOns()[12]);
       if (currentTarget!.matches(".removeBasil"))
-        this.removeIngredients(this.getAddOns()[9]);
+        this.removeIngredients(this.getAddOns()[12]);
       //Sage
       if (currentTarget!.matches(".addSage"))
-        this.addIngredients(this.getAddOns()[10]);
+        this.addIngredients(this.getAddOns()[13]);
       if (currentTarget!.matches(".removeSage"))
-        this.removeIngredients(this.getAddOns()[10]);
+        this.removeIngredients(this.getAddOns()[13]);
       //Minced Meat
       if (currentTarget!.matches(".addMincedMeat"))
-        this.addIngredients(this.getAddOns()[11]);
+        this.addIngredients(this.getAddOns()[14]);
       if (currentTarget!.matches(".removeMincedMeat"))
-        this.removeIngredients(this.getAddOns()[11]);
+        this.removeIngredients(this.getAddOns()[14]);
       //Tuna Fish
       if (currentTarget!.matches(".addTunaFish"))
-        this.addIngredients(this.getAddOns()[12]);
+        this.addIngredients(this.getAddOns()[15]);
       if (currentTarget!.matches(".removeTunaFish"))
-        this.removeIngredients(this.getAddOns()[12]);
+        this.removeIngredients(this.getAddOns()[15]);
       //Mozzarella
       if (currentTarget!.matches(".addMozzarella"))
-        this.addIngredients(this.getAddOns()[13]);
+        this.addIngredients(this.getAddOns()[16]);
       if (currentTarget!.matches(".removeMozzarella"))
-        this.removeIngredients(this.getAddOns()[13]);
+        this.removeIngredients(this.getAddOns()[16]);
       //Parmesan
       if (currentTarget!.matches(".addParmesan"))
-        this.addIngredients(this.getAddOns()[14]);
+        this.addIngredients(this.getAddOns()[17]);
       if (currentTarget!.matches(".removeParmesan"))
-        this.removeIngredients(this.getAddOns()[14]);
+        this.removeIngredients(this.getAddOns()[17]);
       //Gorgonzola
       if (currentTarget!.matches(".addGorgonzola"))
-        this.addIngredients(this.getAddOns()[15]);
+        this.addIngredients(this.getAddOns()[18]);
       if (currentTarget!.matches(".removeGorgonzola"))
-        this.removeIngredients(this.getAddOns()[15]);
+        this.removeIngredients(this.getAddOns()[18]);
+      this.updateItem(parent);
       //console.log(this.allComponents);
     });
   }
