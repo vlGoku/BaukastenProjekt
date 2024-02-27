@@ -1,5 +1,6 @@
 import { Food } from "./foodAbstract";
 import { createTag, createMultiTags } from "./functions";
+import { Cart } from "./cart";
 
 class Pasta extends Food {
   constructor() {
