@@ -72,11 +72,27 @@ class Cart {
       });
     });
   }
+
+  createCartOverlay() {
+    const overlay = createTag(null, "div", "cartOverlay", null, null);
+    const closeButton = createTag(overlay, "button", "closeBtn", null, "X");
+    closeButton.addEventListener("click", () => {
+      document.body.removeChild(overlay);
+    });
+
+    const cartItems = createTag(overlay, "div", null, "cardDisplay", null);
+
+    return overlay;
+  }
+
   createCart() {
-    const cartItems = createTag(null, "div", null, "cardDisplay", null);
+    const overlay = this.createCartOverlay();
+    document.body.appendChild(overlay);
+
+    const cartItems = createTag(overlay, "div", null, "cardDisplay", null);
     createTag(cartItems, "h2", null, null, "Your Order:");
     this.createCartItems(cartItems);
-    createTag(cartItems, "h2", null, null, `total: ${this.totalPrice}`);
+    createTag(cartItems, "h2", null, null, `Total: ${this.totalPrice}`);
   }
 }
 export { Cart };

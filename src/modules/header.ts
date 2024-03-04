@@ -1,4 +1,5 @@
 import { createTag, createMultiTags } from "./functions";
+import { Cart } from "./cart";
 
 function createHeader() {
   const startpoint = createTag(null, "header", null, null, null);
@@ -21,6 +22,10 @@ function createHeader() {
   button.innerHTML = `<i class="fa-solid fa-cart-shopping"></i>`;
 
   // Buttons
+  button.addEventListener("click", () => {
+    const cart = new Cart();
+    cart.createCart();
+  });
   // TODO add cartpage
 }
 
