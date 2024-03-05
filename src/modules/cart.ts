@@ -27,6 +27,7 @@ class Cart {
       }
     });
   }
+  //"?"
   createCartItems(parent: HTMLElement) {
     this.order.forEach((element) => {
       const card = createTag(parent, "div", null, null, null);
@@ -73,21 +74,15 @@ class Cart {
     });
   }
 
-  createCartOverlay() {
+  createCart() {
     const overlay = createTag(null, "div", "cartOverlay", null, null);
+    document.body.appendChild(overlay);
+
+    //bekomme den button nicht in das cardDisplay von der createCart() rein
     const closeButton = createTag(overlay, "button", "closeBtn", null, "X");
     closeButton.addEventListener("click", () => {
       document.body.removeChild(overlay);
     });
-
-    const cartItems = createTag(overlay, "div", null, "cardDisplay", null);
-
-    return overlay;
-  }
-
-  createCart() {
-    const overlay = this.createCartOverlay();
-    document.body.appendChild(overlay);
 
     const cartItems = createTag(overlay, "div", null, "cardDisplay", null);
     createTag(cartItems, "h2", null, null, "Your Order:");

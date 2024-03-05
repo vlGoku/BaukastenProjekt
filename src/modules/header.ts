@@ -26,7 +26,6 @@ function createHeader() {
     const cart = new Cart();
     cart.createCart();
   });
-  // TODO add cartpage
 }
 
 export { createHeader };

@@ -35,6 +35,7 @@ class Pizza extends Food {
       ["Tomato Sauce", "White Sauce"]
     );
   }
+  //"?"
   createBase(parent: HTMLElement) {
     const base = createTag(parent, "div", `${this.type}Base`, "base", null);
     const baseList = createTag(
@@ -52,7 +53,7 @@ class Pizza extends Food {
       false,
       false
     );
-
+    //"?"
     let nextSibling = baseList.firstChild?.nextSibling;
     let getNameIndex = 0;
     while (nextSibling !== null) {
@@ -70,8 +71,6 @@ class Pizza extends Food {
     // remove next button
 
     baseList.addEventListener("click", (e) => {
-      // TODO was working fine now sometimes you have to click more then once
-      //Problem solved
       let currentTarget = e.target as HTMLButtonElement;
 
       if (currentTarget!.matches(".baseWheat")) {
@@ -89,6 +88,7 @@ class Pizza extends Food {
       //console.log(this.allComponents);
     });
   }
+  //"?"
   createMustHaves(parent: HTMLElement) {
     const basisNode = createTag(
       parent,
@@ -106,6 +106,7 @@ class Pizza extends Food {
       "IngredList",
       "Pick a sauce:"
     );
+    //"?"
     createMultiTags(
       basisList,
       "li",
@@ -114,21 +115,6 @@ class Pizza extends Food {
       false,
       false
     );
-
-    let nextSibling = basisList.firstChild?.nextSibling;
-    let getNameIndex = 0;
-    while (nextSibling !== null) {
-      const tag = document.createElement("div");
-      tag.innerHTML = `<button class="must${this.getMustHaves()[
-        getNameIndex
-      ].replace(/ /g, "")}"><i class="fa-solid fa-plus"></i></button>`;
-      nextSibling?.appendChild(tag);
-      //console.log(nextSibling);
-      nextSibling = nextSibling!.nextSibling;
-      getNameIndex++;
-    }
-
-    // Buttons
 
     basisList.addEventListener("click", (e) => {
       let currentTarget = e.target as HTMLButtonElement;
@@ -146,6 +132,21 @@ class Pizza extends Food {
 
       //console.log(this.allComponents);
     });
+
+    let nextSibling = basisList.firstChild?.nextSibling;
+    let getNameIndex = 0;
+    while (nextSibling !== null) {
+      const tag = document.createElement("div");
+      tag.innerHTML = `<button class="must${this.getMustHaves()[
+        getNameIndex
+      ].replace(/ /g, "")}"><i class="fa-solid fa-plus"></i></button>`;
+      nextSibling?.appendChild(tag);
+      //console.log(nextSibling);
+      nextSibling = nextSibling!.nextSibling;
+      getNameIndex++;
+    }
+
+    // Buttons
   }
   createAddOns(parent: HTMLElement) {
     const basisNode = createTag(
@@ -197,7 +198,8 @@ class Pizza extends Food {
       basisNode.remove();
     });
     basisList.addEventListener("click", (e) => {
-      // TODO simplify later | rework
+      //das richtige item wird zwar entfernt aber beim mehrmaligen draufklicken
+      //werden auf die items danach einfach gelöscht
       let currentTarget = e.target as HTMLButtonElement;
       //Onion
       if (currentTarget!.matches(".addOnion"))
@@ -315,6 +317,7 @@ class Pizza extends Food {
   }
 
   createItems(parent: HTMLElement) {
+    //? hier verstehe ich nicht was die createBase, createAddOns und die createMustHaves machen
     this.createBase(parent);
     this.createAddOns(parent);
     this.createMustHaves(parent);

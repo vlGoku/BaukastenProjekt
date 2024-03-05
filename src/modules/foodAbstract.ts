@@ -71,8 +71,9 @@ abstract class Food {
   addIngredients(item: string) {
     if (this.allComponents.includes(item)) {
       console.log(this.renderWarning());
+    } else {
+      this.allComponents.push(item);
     }
-    this.allComponents.push(item);
   }
   removeIngredients(item: string) {
     let index: number = this.allComponents.lastIndexOf(item);
