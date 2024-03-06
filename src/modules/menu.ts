@@ -54,7 +54,7 @@ function createMenu() {
   const wrapPizza = createTag(choice, "div", null, "ingredientsPizza", null);
   pizza.createItems(wrapPizza);
   //button pizza
-  const buttonPizza = createTag(
+  const addPizzaToCart = createTag(
     choice,
     "button",
     `pizzaToCartBtn"`,
@@ -74,12 +74,13 @@ function createMenu() {
     }
   });
 
-  buttonPizza!.addEventListener("click", () => {
+  addPizzaToCart!.addEventListener("click", () => {
     const display = document.querySelector(".displayItem");
+    const pizzaAddOns = document.getElementById("pizzaAddOns");
     display?.remove();
-    console.log("zest");
+    pizza.setPrice(pizza.calculatePrice());
     cart.addToCart(pizza);
-    pizza.allComponents = [];
+    pizzaAddOns?.classList.add("hidden");
     console.log(cart.order);
     pizza.createItems(wrapPizza);
   });

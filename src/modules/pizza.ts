@@ -75,13 +75,13 @@ class Pizza extends Food {
 
       if (currentTarget!.matches(".baseWheat")) {
         this.addIngredients("Wheat");
-        const next = document.getElementById("pizzaAddOns");
+        const next = document.getElementById("pizzaMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
       if (currentTarget!.matches(".baseWhole_Grain")) {
         this.addIngredients("Whole Grain");
-        const next = document.getElementById("pizzaAddOns");
+        const next = document.getElementById("pizzaMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
@@ -89,6 +89,7 @@ class Pizza extends Food {
     });
   }
   //"?"
+
   createMustHaves(parent: HTMLElement) {
     const basisNode = createTag(
       parent,
@@ -121,13 +122,16 @@ class Pizza extends Food {
 
       if (currentTarget!.matches(".mustTomatoSauce")) {
         this.addIngredients("Tomato Sauce");
+        const next = document.getElementById("pizzaAddOns");
+        next?.classList.remove("hidden");
         basisNode.remove();
       }
       if (currentTarget!.matches(".mustWhiteSauce")) {
         this.addIngredients("White Sauce");
+        const next = document.getElementById("pizzaAddOns");
+        next?.classList.remove("hidden");
         basisNode.remove();
       }
-
       this.updateItem(parent);
 
       //console.log(this.allComponents);
@@ -148,6 +152,7 @@ class Pizza extends Food {
 
     // Buttons
   }
+
   createAddOns(parent: HTMLElement) {
     const basisNode = createTag(
       parent,
@@ -180,26 +185,21 @@ class Pizza extends Food {
       const tag = document.createElement("div");
       tag.innerHTML = `<button class="add${this.getAddOns()[
         getNameIndex
-      ].replace(/ /g, "")}"><i class="fa-solid fa-plus"></i></button>
-      <button class="remove${this.getAddOns()[getNameIndex].replace(
-        / /g,
-        ""
-      )}"><i class="fa-solid fa-minus"></i></button>`;
+      ].replace(/ /g, "")}"><i class="fa-solid fa-plus"></i></button>`;
       nextSibling?.appendChild(tag);
       //console.log(nextSibling);
       nextSibling = nextSibling!.nextSibling;
       getNameIndex++;
     }
     // Buttons
-    const button = createTag(basisNode, "button", null, "next_button", "next");
+    /*     const button = createTag(basisNode, "button", null, "next_button", "next");
     button.addEventListener("click", () => {
       const next = document.getElementById("pizzaMustHaves");
       next?.classList.remove("hidden");
       basisNode.remove();
-    });
+    }); */
+
     basisList.addEventListener("click", (e) => {
-      //das richtige item wird zwar entfernt aber beim mehrmaligen draufklicken
-      //werden auf die items danach einfach gelöscht
       let currentTarget = e.target as HTMLButtonElement;
       //Onion
       if (currentTarget!.matches(".addOnion"))
@@ -310,6 +310,7 @@ class Pizza extends Food {
       //console.log(this.allComponents);
     });
   }
+
   updateItem(parent: HTMLElement) {
     const description = document.querySelector(".displayItem") as HTMLElement;
     description!.remove();
@@ -317,7 +318,6 @@ class Pizza extends Food {
   }
 
   createItems(parent: HTMLElement) {
-    //? hier verstehe ich nicht was die createBase, createAddOns und die createMustHaves machen
     this.createBase(parent);
     this.createAddOns(parent);
     this.createMustHaves(parent);

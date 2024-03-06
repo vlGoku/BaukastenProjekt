@@ -27,8 +27,26 @@ class Cart {
       }
     });
   }
-  //"?"
+
   createCartItems(parent: HTMLElement) {
+    this.order.forEach((element) => {
+      const card = createTag(parent, "div", null, null, null);
+      if (element instanceof Pizza) {
+        const elementDiv = createTag(card, "h3", null, null, `${element.type}`);
+        const ingredientList = createTag(elementDiv, "ul", null, null, null);
+        createMultiTags(
+          ingredientList,
+          "li",
+          element.getAllComponents().length,
+          element.getAllComponents(),
+          false,
+          false
+        );
+      }
+    });
+  }
+
+  /* createCartItems(parent: HTMLElement) {
     this.order.forEach((element) => {
       const card = createTag(parent, "div", null, null, null);
       if (element instanceof Pizza) {
@@ -72,22 +90,20 @@ class Cart {
         this.createCart();
       });
     });
-  }
+  } */
 
   createCart() {
     const overlay = createTag(null, "div", "cartOverlay", null, null);
     document.body.appendChild(overlay);
 
-    //bekomme den button nicht in das cardDisplay von der createCart() rein
-    const closeButton = createTag(overlay, "button", "closeBtn", null, "X");
+    const cardDisplay = createTag(overlay, "div", null, "cardDisplay", null);
+    createTag(cardDisplay, "h2", null, "totalOrder", "Your Order:");
+    createTag(cardDisplay, "h2", null, null, `Total: ${this.totalPrice}`);
+
+    const closeButton = createTag(cardDisplay, "button", "closeBtn", null, "X");
     closeButton.addEventListener("click", () => {
       document.body.removeChild(overlay);
     });
-
-    const cartItems = createTag(overlay, "div", null, "cardDisplay", null);
-    createTag(cartItems, "h2", null, null, "Your Order:");
-    this.createCartItems(cartItems);
-    createTag(cartItems, "h2", null, null, `Total: ${this.totalPrice}`);
   }
 }
 export { Cart };

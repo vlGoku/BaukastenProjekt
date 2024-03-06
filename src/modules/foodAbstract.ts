@@ -57,7 +57,7 @@ abstract class Food {
     return this.mustHaves;
   }
   setPrice(newPrice: number) {
-    this.price = newPrice;
+    return (this.price = newPrice);
   }
   getPrice() {
     return this.price;
@@ -69,9 +69,7 @@ abstract class Food {
     this.allComponents.pop();
   }
   addIngredients(item: string) {
-    if (this.allComponents.includes(item)) {
-      console.log(this.renderWarning());
-    } else {
+    if (!this.allComponents.includes(item)) {
       this.allComponents.push(item);
     }
   }
