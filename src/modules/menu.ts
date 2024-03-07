@@ -74,6 +74,12 @@ function createMenu() {
     }
   });
 
+  //BITTE UM HILFE
+  //ich habe hier das problem, dass die pizza nach dem hinzufügen ins cart nicht "resetet" wird
+  //ich habe also immer noch die gleiche pizza mit den gleichen zutaten als eigenschaften in allComponents
+  //ich vermute es liegt daran, dass in der Zeile 27 eine const pizza erstellt wird und diese nicht
+  //gelöscht wird
+  //Außerdem bekomme ich die displayInfo dadurch auch nicht zurückgesetzt
   addPizzaToCart!.addEventListener("click", () => {
     const display = document.querySelector(".displayItem");
     const pizzaAddOns = document.getElementById("pizzaAddOns");
@@ -84,7 +90,7 @@ function createMenu() {
     console.log(cart.order);
     pizza.createItems(wrapPizza);
   });
-  // Pasta
+  /*   // Pasta
   const pastaHeading = createTag(choice, "div", null, "pastaHeading", null);
   const pastDiv = createTag(pastaHeading, "h3", null, null, "Pasta");
   const btnPasta = createTag(
@@ -253,7 +259,7 @@ function createMenu() {
     if (currentTarget!.matches(".removeMineralWater05")) {
       cart.removeFromCart(drinks[8] as Drink);
     }
-  });
+  }); */
   // todo addCart and Warning to the right spaces
 }
 export { createMenu };

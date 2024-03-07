@@ -68,7 +68,6 @@ class Pizza extends Food {
     }
 
     // Buttons
-    // remove next button
 
     baseList.addEventListener("click", (e) => {
       let currentTarget = e.target as HTMLButtonElement;
@@ -86,6 +85,7 @@ class Pizza extends Food {
         base.remove();
       }
       //console.log(this.allComponents);
+      this.updateItem(parent);
     });
   }
   //"?"
@@ -319,8 +319,8 @@ class Pizza extends Food {
 
   createItems(parent: HTMLElement) {
     this.createBase(parent);
-    this.createAddOns(parent);
     this.createMustHaves(parent);
+    this.createAddOns(parent);
     this.renderItem(parent);
   }
 }

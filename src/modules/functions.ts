@@ -1,5 +1,4 @@
 //create Tags
-//"?"verstehe das erstellen der tags nicht so gut und allgemein die ganze datei hier
 function createTag(
   parent_node: HTMLElement | null,
   tag_node: string,
