@@ -9,6 +9,7 @@ import { createMultiTags, createTag } from "./functions";
 function createMenu() {
   //create Cart for Order
   const cart = new Cart();
+  cart.createCart();
 
   //create Drinks
   const drinks: object[] = [
@@ -57,10 +58,11 @@ function createMenu() {
   const addPizzaToCart = createTag(
     choice,
     "button",
-    `pizzaToCartBtn"`,
+    "pizzaToCartBtn",
     null,
     "Add to cart"
   );
+  addPizzaToCart.classList.add("hidden");
 
   btnPizza.addEventListener("click", () => {
     // toDo and hidden to cart button did not work...
@@ -74,21 +76,24 @@ function createMenu() {
     }
   });
 
-  //BITTE UM HILFE
-  //ich habe hier das problem, dass die pizza nach dem hinzufügen ins cart nicht "resetet" wird
-  //ich habe also immer noch die gleiche pizza mit den gleichen zutaten als eigenschaften in allComponents
-  //ich vermute es liegt daran, dass in der Zeile 27 eine const pizza erstellt wird und diese nicht
-  //gelöscht wird
-  //Außerdem bekomme ich die displayInfo dadurch auch nicht zurückgesetzt
+  //create const for cartDisplay
+  const totalOrder = document.querySelector(".totalOrder");
+
+  //Problem gelöst
   addPizzaToCart!.addEventListener("click", () => {
     const display = document.querySelector(".displayItem");
     const pizzaAddOns = document.getElementById("pizzaAddOns");
     display?.remove();
-    pizza.setPrice(pizza.calculatePrice());
-    cart.addToCart(pizza);
+    const newPizza = new Pizza();
+    newPizza.allComponents = pizza.allComponents;
+    newPizza.setPrice(newPizza.calculatePrice());
+    cart.addToCart(newPizza);
     pizzaAddOns?.classList.add("hidden");
     console.log(cart.order);
+    pizza.resetPizza();
     pizza.createItems(wrapPizza);
+    addPizzaToCart.classList.add("hidden");
+    cart.createCartItems(totalOrder as HTMLElement);
   });
   /*   // Pasta
   const pastaHeading = createTag(choice, "div", null, "pastaHeading", null);

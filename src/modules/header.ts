@@ -23,8 +23,8 @@ function createHeader() {
 
   // Buttons
   button.addEventListener("click", () => {
-    const cart = new Cart();
-    cart.createCart();
+    const cart = document.getElementById("cartOverlay");
+    cart?.classList.remove("hidden");
   });
 }
 

@@ -9,6 +9,7 @@ class Cart {
     this.order = [];
     this.totalPrice = this.getTotal();
   }
+
   getTotal(): number {
     let current = 0;
     this.order.forEach((element) => {
@@ -94,15 +95,22 @@ class Cart {
 
   createCart() {
     const overlay = createTag(null, "div", "cartOverlay", null, null);
+    overlay.classList.add("hidden");
     document.body.appendChild(overlay);
 
     const cardDisplay = createTag(overlay, "div", null, "cardDisplay", null);
-    createTag(cardDisplay, "h2", null, "totalOrder", "Your Order:");
+    const totalOrder = createTag(
+      cardDisplay,
+      "h2",
+      null,
+      "totalOrder",
+      "Your Order:"
+    );
     createTag(cardDisplay, "h2", null, null, `Total: ${this.totalPrice}`);
 
     const closeButton = createTag(cardDisplay, "button", "closeBtn", null, "X");
     closeButton.addEventListener("click", () => {
-      document.body.removeChild(overlay);
+      overlay.classList.add("hidden");
     });
   }
 }

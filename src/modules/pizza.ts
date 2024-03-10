@@ -35,7 +35,6 @@ class Pizza extends Food {
       ["Tomato Sauce", "White Sauce"]
     );
   }
-  //"?"
   createBase(parent: HTMLElement) {
     const base = createTag(parent, "div", `${this.type}Base`, "base", null);
     const baseList = createTag(
@@ -53,7 +52,6 @@ class Pizza extends Food {
       false,
       false
     );
-    //"?"
     let nextSibling = baseList.firstChild?.nextSibling;
     let getNameIndex = 0;
     while (nextSibling !== null) {
@@ -88,7 +86,6 @@ class Pizza extends Food {
       this.updateItem(parent);
     });
   }
-  //"?"
 
   createMustHaves(parent: HTMLElement) {
     const basisNode = createTag(
@@ -107,7 +104,6 @@ class Pizza extends Food {
       "IngredList",
       "Pick a sauce:"
     );
-    //"?"
     createMultiTags(
       basisList,
       "li",
@@ -125,12 +121,21 @@ class Pizza extends Food {
         const next = document.getElementById("pizzaAddOns");
         next?.classList.remove("hidden");
         basisNode.remove();
+        const addPizzaToCart = document.getElementById("pizzaToCartBtn");
+        if (addPizzaToCart) {
+          addPizzaToCart.classList.remove("hidden");
+        }
       }
       if (currentTarget!.matches(".mustWhiteSauce")) {
         this.addIngredients("White Sauce");
         const next = document.getElementById("pizzaAddOns");
         next?.classList.remove("hidden");
         basisNode.remove();
+        const addPizzaToCart = document.getElementById("pizzaToCartBtn");
+        console.log(addPizzaToCart);
+        if (addPizzaToCart) {
+          addPizzaToCart.classList.remove("hidden");
+        }
       }
       this.updateItem(parent);
 
@@ -192,6 +197,7 @@ class Pizza extends Food {
       getNameIndex++;
     }
     // Buttons
+    //Deleted Next button, not required anymore
     /*     const button = createTag(basisNode, "button", null, "next_button", "next");
     button.addEventListener("click", () => {
       const next = document.getElementById("pizzaMustHaves");
@@ -322,6 +328,12 @@ class Pizza extends Food {
     this.createMustHaves(parent);
     this.createAddOns(parent);
     this.renderItem(parent);
+  }
+
+  resetPizza() {
+    this.allComponents = [];
+    let price = this.getPrice();
+    price = 0;
   }
 }
 
