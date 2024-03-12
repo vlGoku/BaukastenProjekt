@@ -9,7 +9,6 @@ class Cart {
     this.order = [];
     this.totalPrice = this.getTotal();
   }
-
   getTotal(): number {
     let current = 0;
     this.order.forEach((element) => {
@@ -28,13 +27,31 @@ class Cart {
       }
     });
   }
+  emptyCart() {
+    const orderDiv = document.getElementById("orderDiv");
+    orderDiv?.remove();
+    this.order = [];
+  }
 
-  createCartItems(parent: HTMLElement) {
+  //small change to the createCartItems => create Items on click once, not for the whole this.order array
+  /*   createCartItems(parent: HTMLElement) {
     this.order.forEach((element) => {
       const card = createTag(parent, "div", null, null, null);
       if (element instanceof Pizza) {
-        const elementDiv = createTag(card, "h3", null, null, `${element.type}`);
-        const ingredientList = createTag(elementDiv, "ul", null, null, null);
+        const elementDiv = createTag(
+          card,
+          "h3",
+          "elementTypeHeader",
+          null,
+          `${element.type}`
+        );
+        const ingredientList = createTag(
+          elementDiv,
+          "ul",
+          "ingredList",
+          null,
+          null
+        );
         createMultiTags(
           ingredientList,
           "li",
@@ -45,6 +62,39 @@ class Cart {
         );
       }
     });
+  } */
+  createCartItems(parent: HTMLElement, element: Food | Drink) {
+    const card = createTag(
+      parent,
+      "div",
+      null,
+      null,
+      `<button id="deleteItemFromCart"><i class="fa-solid fa-minus"></i></button>`
+    );
+    if (element instanceof Pizza) {
+      const elementDiv = createTag(
+        card,
+        "h3",
+        "elementTypeHeader",
+        null,
+        `${element.type}`
+      );
+      const ingredientList = createTag(
+        elementDiv,
+        "ul",
+        "ingredList",
+        null,
+        null
+      );
+      createMultiTags(
+        ingredientList,
+        "li",
+        element.getAllComponents().length,
+        element.getAllComponents(),
+        false,
+        false
+      );
+    }
   }
 
   /* createCartItems(parent: HTMLElement) {
@@ -99,18 +149,23 @@ class Cart {
     document.body.appendChild(overlay);
 
     const cardDisplay = createTag(overlay, "div", null, "cardDisplay", null);
-    const totalOrder = createTag(
-      cardDisplay,
-      "h2",
-      null,
-      "totalOrder",
-      "Your Order:"
-    );
+    createTag(cardDisplay, "h2", null, "totalOrder", "Your Order:");
+    createTag(cardDisplay, "div", "orderDiv", null, null);
     createTag(cardDisplay, "h2", null, null, `Total: ${this.totalPrice}`);
 
     const closeButton = createTag(cardDisplay, "button", "closeBtn", null, "X");
     closeButton.addEventListener("click", () => {
       overlay.classList.add("hidden");
+    });
+    const deleteAllButton = createTag(
+      cardDisplay,
+      "button",
+      "deleteAll",
+      null,
+      "Delete All"
+    );
+    deleteAllButton.addEventListener("click", () => {
+      this.emptyCart();
     });
   }
 }

@@ -11,7 +11,7 @@ $bg: black;
   font-style: normal;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* ------ Mobile ------ */

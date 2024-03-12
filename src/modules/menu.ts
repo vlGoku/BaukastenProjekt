@@ -77,7 +77,7 @@ function createMenu() {
   });
 
   //create const for cartDisplay
-  const totalOrder = document.querySelector(".totalOrder");
+  const orderDiv = document.getElementById("orderDiv");
 
   //Problem gelöst
   addPizzaToCart!.addEventListener("click", () => {
@@ -93,8 +93,9 @@ function createMenu() {
     pizza.resetPizza();
     pizza.createItems(wrapPizza);
     addPizzaToCart.classList.add("hidden");
-    cart.createCartItems(totalOrder as HTMLElement);
+    cart.createCartItems(orderDiv as HTMLElement, newPizza);
   });
+
   /*   // Pasta
   const pastaHeading = createTag(choice, "div", null, "pastaHeading", null);
   const pastDiv = createTag(pastaHeading, "h3", null, null, "Pasta");

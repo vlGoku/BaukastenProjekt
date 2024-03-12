@@ -6,6 +6,9 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
+  &.hidden {
+    display: none;
+  }
 }
 
 .cardDisplay {
@@ -13,10 +16,71 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
-  height: 80vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 80vw;
-  border: 1px solid black;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+
+  .totalOrder {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+
+  #elementTypeHeader {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+
+  #ingredList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #666;
+
+    li {
+      margin-bottom: 5px;
+      font-size: 18px;
+
+      &:before {
+        content: "•";
+        margin-right: 5px;
+        color: #999;
+      }
+    }
+  }
+
+  #closeBtn,
+  #deleteAll {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #777;
+
+    &:hover {
+      color: #333;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  #closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  #deleteAll {
+    position: relative;
+    margin-top: 20px;
+    align-self: flex-end;
+  }
 }
