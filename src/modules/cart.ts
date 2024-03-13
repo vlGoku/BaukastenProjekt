@@ -22,11 +22,11 @@ class Cart {
   removeFromCart(item: Food | Drink) {
     let id: string = item.getId();
     console.log(id);
-    /* this.order.forEach((element) => {
+    this.order.forEach((element) => {
       if (element.getId() === id) {
         this.order.splice(this.order.indexOf(element), 1);
       }
-    }); */
+    });
   }
   emptyCart() {
     const orderDiv = document.getElementById("orderDiv");
@@ -88,6 +88,7 @@ class Cart {
       cartButton?.classList.add("notEmpty");
     }
 
+    //Diesen button wollte ich benutzen, um nur eine Bestellung rauszulöschen
     //Hier kriege ich nicht das eine Element ausgewählt, sondern alle Bestellungen gleichzeitig sobald mehrere drinnen sind
     //Außerdem hat der zweite Button gar keine Funktion
     const deleteItemFromCart = document.querySelector(".buttonDeleteItem");
