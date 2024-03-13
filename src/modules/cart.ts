@@ -21,16 +21,25 @@ class Cart {
   }
   removeFromCart(item: Food | Drink) {
     let id: string = item.getId();
-    this.order.forEach((element) => {
+    console.log(id);
+    /* this.order.forEach((element) => {
       if (element.getId() === id) {
         this.order.splice(this.order.indexOf(element), 1);
       }
-    });
+    }); */
   }
   emptyCart() {
     const orderDiv = document.getElementById("orderDiv");
-    orderDiv?.remove();
+    const totalPrice = document.getElementById("totalPrice");
+    while (orderDiv?.firstChild) {
+      orderDiv.removeChild(orderDiv.firstChild);
+    }
     this.order = [];
+    if (totalPrice instanceof HTMLElement) {
+      totalPrice.innerHTML = `Total: ${this.getTotal().toFixed(2).toString()}€`;
+    }
+    const cartButton = document.getElementById("btn_cartHead");
+    cartButton?.classList.remove("notEmpty");
   }
 
   //small change to the createCartItems => create Items on click once, not for the whole this.order array
@@ -64,13 +73,29 @@ class Cart {
     });
   } */
   createCartItems(parent: HTMLElement, element: Food | Drink) {
-    const card = createTag(
-      parent,
-      "div",
+    const card = createTag(parent, "div", null, null, null);
+    createTag(
+      card,
+      "button",
       null,
-      null,
-      `<button id="deleteItemFromCart"><i class="fa-solid fa-minus"></i></button>`
+      "buttonDeleteItem",
+      `<i class="fa-solid fa-minus"></i>`
     );
+
+    //cart usability
+    const cartButton = document.getElementById("btn_cartHead");
+    if (this.order.length > 0) {
+      cartButton?.classList.add("notEmpty");
+    }
+
+    //Hier kriege ich nicht das eine Element ausgewählt, sondern alle Bestellungen gleichzeitig sobald mehrere drinnen sind
+    //Außerdem hat der zweite Button gar keine Funktion
+    const deleteItemFromCart = document.querySelector(".buttonDeleteItem");
+    deleteItemFromCart?.addEventListener("click", (e) => {
+      let currentTarget = e.target as HTMLButtonElement;
+      console.log(currentTarget.parentElement);
+    });
+
     if (element instanceof Pizza) {
       const elementDiv = createTag(
         card,
@@ -151,7 +176,7 @@ class Cart {
     const cardDisplay = createTag(overlay, "div", null, "cardDisplay", null);
     createTag(cardDisplay, "h2", null, "totalOrder", "Your Order:");
     createTag(cardDisplay, "div", "orderDiv", null, null);
-    createTag(cardDisplay, "h2", null, null, `Total: ${this.totalPrice}`);
+    createTag(cardDisplay, "h2", "totalPrice", null, `Total: `);
 
     const closeButton = createTag(cardDisplay, "button", "closeBtn", null, "X");
     closeButton.addEventListener("click", () => {

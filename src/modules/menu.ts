@@ -78,6 +78,7 @@ function createMenu() {
 
   //create const for cartDisplay
   const orderDiv = document.getElementById("orderDiv");
+  const totalPrice = document.getElementById("totalPrice");
 
   //Problem gelöst
   addPizzaToCart!.addEventListener("click", () => {
@@ -94,6 +95,9 @@ function createMenu() {
     pizza.createItems(wrapPizza);
     addPizzaToCart.classList.add("hidden");
     cart.createCartItems(orderDiv as HTMLElement, newPizza);
+    if (totalPrice instanceof HTMLElement) {
+      totalPrice.innerHTML = `Total: ${cart.getTotal().toFixed(2).toString()}€`;
+    }
   });
 
   /*   // Pasta
