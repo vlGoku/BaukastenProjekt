@@ -52,6 +52,7 @@ class Pizza extends Food {
       false,
       false
     );
+
     let nextSibling = baseList.firstChild?.nextSibling;
     let getNameIndex = 0;
     while (nextSibling !== null) {
@@ -60,7 +61,6 @@ class Pizza extends Food {
         getNameIndex
       ].replace(/ /g, "_")}"><i class="fa-solid fa-plus"></i></button>`;
       nextSibling?.appendChild(tag);
-      //console.log(nextSibling);
       nextSibling = nextSibling!.nextSibling;
       getNameIndex++;
     }
@@ -82,7 +82,6 @@ class Pizza extends Food {
         next?.classList.remove("hidden");
         base.remove();
       }
-      //console.log(this.allComponents);
       this.updateItem(parent);
     });
   }
@@ -150,7 +149,6 @@ class Pizza extends Food {
         getNameIndex
       ].replace(/ /g, "")}"><i class="fa-solid fa-plus"></i></button>`;
       nextSibling?.appendChild(tag);
-      //console.log(nextSibling);
       nextSibling = nextSibling!.nextSibling;
       getNameIndex++;
     }

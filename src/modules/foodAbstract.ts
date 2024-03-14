@@ -89,6 +89,9 @@ abstract class Food {
     return currentPrice;
   }
 
+  //Ich kann hier 3 Bestellungen zusammenstellen und bei der viertern
+  //verschwindet die DisplayItem Übersicht und ich kann mir nicht erklären
+  //warum bitte um Erklärung/Hilfe
   renderItem(parent: HTMLElement) {
     let currentPrice = this.calculatePrice();
     const display = createTag(parent, "div", null, "displayItem", null);

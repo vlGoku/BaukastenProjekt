@@ -1,5 +1,7 @@
 import { Food } from "./foodAbstract";
 import { Pizza } from "./pizza";
+import { Pasta } from "./pasta";
+import { Salad } from "./salad";
 import { Drink } from "./drink";
 import { createTag, createMultiTags } from "./functions";
 class Cart {
@@ -21,7 +23,6 @@ class Cart {
   }
   removeFromCart(item: Food | Drink) {
     let id: string = item.getId();
-    console.log(id);
     this.order.forEach((element) => {
       if (element.getId() === id) {
         this.order.splice(this.order.indexOf(element), 1);
@@ -73,7 +74,7 @@ class Cart {
     });
   } */
   createCartItems(parent: HTMLElement, element: Food | Drink) {
-    const card = createTag(parent, "div", null, null, null);
+    const card = createTag(parent, "div", "card", null, null);
     createTag(
       card,
       "button",
@@ -81,24 +82,33 @@ class Cart {
       "buttonDeleteItem",
       `<i class="fa-solid fa-minus"></i>`
     );
-
     //cart usability
     const cartButton = document.getElementById("btn_cartHead");
-    if (this.order.length > 0) {
+    if (this.order.length !== 0) {
       cartButton?.classList.add("notEmpty");
     }
 
-    //Diesen button wollte ich benutzen, um nur eine Bestellung rauszulöschen
-    //Hier kriege ich nicht das eine Element ausgewählt, sondern alle Bestellungen gleichzeitig sobald mehrere drinnen sind
-    //Außerdem hat der zweite Button gar keine Funktion
     //TODO: Du musst querySelectorAll benutzen, um alle Buttons zu bekommen. Das ist auch der Grund weshalb der zweite Buttoen nicht funktioniert.
     //TODO: Du musst dann mit einer Schleife durch die Buttons iterieren und jedem Button ein EventListener hinzufügen.
     //TODO: Danach löscht du einerseits dein eintrag aus dem Array order (zum Beispiel mit splice oder filter) und andererseits aus dem DOM.
     //TODO: Dein Element hasst du eh schon richtig im Console log ausgewählt du muss nur noch currentTarget.parentElement.delete() machen.
-    const deleteItemFromCart = document.querySelector(".buttonDeleteItem");
-    deleteItemFromCart?.addEventListener("click", (e) => {
-      let currentTarget = e.target as HTMLButtonElement;
-      console.log(currentTarget.parentElement);
+    const deleteItemFromCart = document.querySelectorAll(".buttonDeleteItem");
+    const totalPrice = document.getElementById("totalPrice");
+    deleteItemFromCart.forEach((buttonDelete, index) => {
+      buttonDelete.addEventListener("click", (e) => {
+        let targetElement = e.target as HTMLElement;
+        let currentTarget = targetElement.parentElement;
+        this.order.splice(index, 1);
+        currentTarget?.remove();
+        if (totalPrice instanceof HTMLElement) {
+          totalPrice.innerHTML = `Total: ${this.getTotal()
+            .toFixed(2)
+            .toString()}€`;
+        }
+        if (this.order.length === 0) {
+          cartButton?.classList.remove("notEmpty");
+        }
+      });
     });
 
     if (element instanceof Pizza) {
@@ -107,7 +117,7 @@ class Cart {
         "h3",
         "elementTypeHeader",
         null,
-        `${element.type}`
+        `${element.type + " " + element.getPrice().toFixed(2) + " €"}`
       );
       const ingredientList = createTag(
         elementDiv,
@@ -123,6 +133,71 @@ class Cart {
         element.getAllComponents(),
         false,
         false
+      );
+    }
+    if (element instanceof Pasta) {
+      const elementDiv = createTag(
+        card,
+        "h3",
+        "elementTypeHeader",
+        null,
+        `${element.type + " " + element.getPrice().toFixed(2) + " €"}`
+      );
+      const ingredientList = createTag(
+        elementDiv,
+        "ul",
+        "ingredList",
+        null,
+        null
+      );
+      createMultiTags(
+        ingredientList,
+        "li",
+        element.getAllComponents().length,
+        element.getAllComponents(),
+        false,
+        false
+      );
+    }
+    if (element instanceof Salad) {
+      const elementDiv = createTag(
+        card,
+        "h3",
+        "elementTypeHeader",
+        null,
+        `${element.type + " " + element.getPrice().toFixed(2) + " €"}`
+      );
+      const ingredientList = createTag(
+        elementDiv,
+        "ul",
+        "ingredList",
+        null,
+        null
+      );
+      createMultiTags(
+        ingredientList,
+        "li",
+        element.getAllComponents().length,
+        element.getAllComponents(),
+        false,
+        false
+      );
+    }
+    if (element instanceof Drink) {
+      createTag(
+        card,
+        "h3",
+        null,
+        null,
+        `${
+          element.type +
+          " " +
+          element.size +
+          "l" +
+          " " +
+          element.getPrice().toFixed(2) +
+          " €"
+        }`
       );
     }
   }

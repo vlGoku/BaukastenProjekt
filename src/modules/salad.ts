@@ -75,54 +75,53 @@ class Salad extends Food {
 
       if (currentTarget!.matches(".baseRomaine")) {
         this.addIngredients("Romaine");
-        const next = document.getElementById("saladAddOns");
+        const next = document.getElementById("saladMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
-      if (currentTarget!.matches(".baseLolloRosso")) {
+      if (currentTarget!.matches(".baseLollo_Rosso")) {
         this.addIngredients("Lollo Rosso");
-        const next = document.getElementById("saladAddOns");
+        const next = document.getElementById("saladMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
       if (currentTarget!.matches(".baseRadicchio")) {
         this.addIngredients("Radicchio");
-        const next = document.getElementById("saladAddOns");
+        const next = document.getElementById("saladMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
-      if (currentTarget!.matches(".baseBabySpinach")) {
+      if (currentTarget!.matches(".baseBaby_Spinach")) {
         this.addIngredients("Baby Spinach");
-        const next = document.getElementById("saladAddOns");
+        const next = document.getElementById("saladMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
-      if (currentTarget!.matches(".basePotatoSalad")) {
+      if (currentTarget!.matches(".basePotato_Salad")) {
         this.addIngredients("Potato Salad");
-        const next = document.getElementById("saladAddOns");
+        const next = document.getElementById("saladMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
-      if (currentTarget!.matches(".basePastaSalad")) {
+      if (currentTarget!.matches(".basePasta_Salad")) {
         this.addIngredients("Pasta Salad");
-        const next = document.getElementById("saladAddOns");
+        const next = document.getElementById("saladMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
-      if (currentTarget!.matches(".baseLeaflettuce")) {
+      if (currentTarget!.matches(".baseLeaf_lettuce")) {
         this.addIngredients("Leaf lettuce");
-        const next = document.getElementById("saladAddOns");
+        const next = document.getElementById("saladMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
-      if (currentTarget!.matches(".baseBirdsSalad")) {
+      if (currentTarget!.matches(".baseBirds_Salad")) {
         this.addIngredients("Bird's Salad");
-        const next = document.getElementById("saladAddOns");
+        const next = document.getElementById("saladMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
-
-      console.log(this.allComponents);
+      this.updateItem(parent);
     });
   }
   createMustHaves(parent: HTMLElement) {
@@ -151,6 +150,52 @@ class Salad extends Food {
       false
     );
 
+    basisList.addEventListener("click", (e) => {
+      let currentTarget = e.target as HTMLButtonElement;
+
+      if (currentTarget!.matches(".mustOliveOilandBalsamicVinegar")) {
+        this.addIngredients("Olive Oil and Balsamic Vinegar");
+        const next = document.getElementById("saladAddOns");
+        next?.classList.remove("hidden");
+        basisNode.remove();
+        const addSaladToCart = document.getElementById("saladToCartBtn");
+        if (addSaladToCart) {
+          addSaladToCart.classList.remove("hidden");
+        }
+      }
+      if (currentTarget!.matches(".mustPumpkinSeedOilandAppleCiderVinegar")) {
+        this.addIngredients("Pumpkin-Seed Oil and Apple Cider Vinegar");
+        const next = document.getElementById("saladAddOns");
+        next?.classList.remove("hidden");
+        basisNode.remove();
+        const addSaladToCart = document.getElementById("saladToCartBtn");
+        if (addSaladToCart) {
+          addSaladToCart.classList.remove("hidden");
+        }
+      }
+      if (currentTarget!.matches(".mustFrenchDressing")) {
+        this.addIngredients("French Dressing");
+        const next = document.getElementById("saladAddOns");
+        next?.classList.remove("hidden");
+        basisNode.remove();
+        const addSaladToCart = document.getElementById("saladToCartBtn");
+        if (addSaladToCart) {
+          addSaladToCart.classList.remove("hidden");
+        }
+      }
+      if (currentTarget!.matches(".mustYoghurtDressing")) {
+        this.addIngredients("Yoghurt Dressing");
+        const next = document.getElementById("saladAddOns");
+        next?.classList.remove("hidden");
+        basisNode.remove();
+        const addSaladToCart = document.getElementById("saladToCartBtn");
+        if (addSaladToCart) {
+          addSaladToCart.classList.remove("hidden");
+        }
+      }
+      this.updateItem(parent);
+    });
+
     let nextSibling = basisList.firstChild?.nextSibling;
     let getNameIndex = 0;
     while (nextSibling !== null) {
@@ -164,31 +209,6 @@ class Salad extends Food {
     }
 
     // Buttons
-
-    basisList.addEventListener("click", (e) => {
-      let currentTarget = e.target as HTMLButtonElement;
-
-      if (currentTarget!.matches(".OliveOilandBalsamicVinegar")) {
-        this.addIngredients("Olive Oil and Balsamic Vinegar");
-        basisNode.remove();
-      }
-      if (currentTarget!.matches(".PumpkinSeedOilandAppleCiderVinegar")) {
-        this.addIngredients("Pumpkin-Seed Oil and Apple Cider Vinegar");
-        basisNode.remove();
-      }
-      if (currentTarget!.matches(".mustFrenchDressing")) {
-        this.addIngredients("French Dressing");
-        basisNode.remove();
-      }
-      if (currentTarget!.matches(".YoghurtDressing")) {
-        this.addIngredients("Yoghurt Dressing");
-        basisNode.remove();
-      }
-
-      this.updateItem(parent);
-
-      console.log(this.allComponents);
-    });
   }
   createAddOns(parent: HTMLElement) {
     const basisNode = createTag(
@@ -222,23 +242,19 @@ class Salad extends Food {
       const tag = document.createElement("div");
       tag.innerHTML = `<button class="add${this.getAddOns()[
         getNameIndex
-      ].replace(/ /g, "")}"><i class="fa-solid fa-plus"></i></button>
-      <button class="remove${this.getAddOns()[getNameIndex].replace(
-        / /g,
-        ""
-      )}"><i class="fa-solid fa-minus"></i></button>`;
+      ].replace(/ /g, "")}"><i class="fa-solid fa-plus"></i></button>`;
       nextSibling?.appendChild(tag);
       //console.log(nextSibling);
       nextSibling = nextSibling!.nextSibling;
       getNameIndex++;
     }
     // Buttons
-    const button = createTag(basisNode, "button", null, "next_button", "next");
+    /*     const button = createTag(basisNode, "button", null, "next_button", "next");
     button.addEventListener("click", () => {
       const next = document.getElementById("saladMustHaves");
       next?.classList.remove("hidden");
       basisNode.remove();
-    });
+    }); */
     basisList.addEventListener("click", (e) => {
       // TODO simplify later | rework
       let currentTarget = e.target as HTMLButtonElement;
@@ -293,7 +309,6 @@ class Salad extends Food {
       if (currentTarget!.matches(".removeOnion"))
         this.removeIngredients(this.getAddOns()[9]);
       this.updateItem(parent);
-
       //console.log(this.allComponents);
     });
   }
@@ -308,6 +323,12 @@ class Salad extends Food {
     this.createAddOns(parent);
     this.createMustHaves(parent);
     this.renderItem(parent);
+  }
+
+  resetSalad() {
+    this.allComponents = [];
+    let price = this.getPrice();
+    price = 0;
   }
 }
 export { Salad };
