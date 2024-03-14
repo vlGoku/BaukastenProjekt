@@ -1,4 +1,4 @@
-import "../src/styles.scss";
+import "./styles.scss";
 import { createTag, createMultiTags } from "./modules/functions";
 import { createHeader } from "./modules/header";
 import { createMenu } from "./modules/menu";

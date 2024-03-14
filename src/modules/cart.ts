@@ -91,6 +91,10 @@ class Cart {
     //Diesen button wollte ich benutzen, um nur eine Bestellung rauszulöschen
     //Hier kriege ich nicht das eine Element ausgewählt, sondern alle Bestellungen gleichzeitig sobald mehrere drinnen sind
     //Außerdem hat der zweite Button gar keine Funktion
+    //TODO: Du musst querySelectorAll benutzen, um alle Buttons zu bekommen. Das ist auch der Grund weshalb der zweite Buttoen nicht funktioniert.
+    //TODO: Du musst dann mit einer Schleife durch die Buttons iterieren und jedem Button ein EventListener hinzufügen.
+    //TODO: Danach löscht du einerseits dein eintrag aus dem Array order (zum Beispiel mit splice oder filter) und andererseits aus dem DOM.
+    //TODO: Dein Element hasst du eh schon richtig im Console log ausgewählt du muss nur noch currentTarget.parentElement.delete() machen.
     const deleteItemFromCart = document.querySelector(".buttonDeleteItem");
     deleteItemFromCart?.addEventListener("click", (e) => {
       let currentTarget = e.target as HTMLButtonElement;

@@ -65,8 +65,8 @@ function createMenu() {
   addPizzaToCart.classList.add("hidden");
 
   btnPizza.addEventListener("click", () => {
-    // toDo and hidden to cart button did not work...
-
+    //ToDo: and hidden to cart button did not work...
+    //TODO: (cm) versuche es einmal mit warpPizza.classList.toggle("hidden"); oder wrapPizza.className = 'hidden'
     if (wrapPizza.classList.contains("hidden")) {
       wrapPizza.classList.add("ingredientsPizza");
       wrapPizza.classList.remove("hidden");
