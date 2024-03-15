@@ -317,7 +317,7 @@ class Pizza extends Food {
 
   updateItem(parent: HTMLElement) {
     const description = document.querySelector(".displayItem") as HTMLElement;
-    description!.remove();
+    if (description) description!.remove();
     this.renderItem(parent);
   }
 
@@ -325,7 +325,7 @@ class Pizza extends Food {
     this.createBase(parent);
     this.createMustHaves(parent);
     this.createAddOns(parent);
-    this.renderItem(parent);
+    //this.renderItem(parent);
   }
 
   resetPizza() {

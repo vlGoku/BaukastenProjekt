@@ -314,7 +314,7 @@ class Salad extends Food {
   }
   updateItem(parent: HTMLElement) {
     const description = document.querySelector(".displayItem") as HTMLElement;
-    description!.remove();
+    if (description) description!.remove();
     this.renderItem(parent);
   }
 
@@ -322,7 +322,7 @@ class Salad extends Food {
     this.createBase(parent);
     this.createAddOns(parent);
     this.createMustHaves(parent);
-    this.renderItem(parent);
+    //this.renderItem(parent);
   }
 
   resetSalad() {
