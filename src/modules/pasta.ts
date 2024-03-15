@@ -336,7 +336,9 @@ class Pasta extends Food {
   }
   updateItem(parent: HTMLElement) {
     const description = document.querySelector(".displayItem") as HTMLElement;
-    description!.remove();
+    //TODO: Die If Kondition verhindert dass das Scipt abstürzt wenn das Element mioch nicht existiert#
+    //TODO: Das musst du auch bei salsd.ts usw machen.
+    if (description) description.remove();
     this.renderItem(parent);
   }
 

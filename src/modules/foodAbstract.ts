@@ -119,11 +119,11 @@ abstract class Food {
     console.log(`The current price is ${currentPrice}!`);
   }
 
-  updateItem(parent: HTMLElement) {
+  /*  updateItem(parent: HTMLElement) {
     const description = document.querySelector(".displayItem");
     description!.remove();
     this.renderItem(parent);
-  }
+  } */
 
   renderWarning() {
     const parent = document.getElementById("ingredientList");
