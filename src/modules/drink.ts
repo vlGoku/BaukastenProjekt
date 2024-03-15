@@ -1,3 +1,4 @@
+import { Cart } from "./cart";
 import { createTag, createMultiTags } from "./functions";
 
 class Drink {
@@ -34,7 +35,7 @@ class Drink {
       .toString()
       .replace(".", "")}`;
   }
-  renderDrink(parent: HTMLElement) {
+  renderDrink(parent: HTMLElement, cart: Cart) {
     const drink = createTag(parent, "div", null, "drinkDisplay", null);
     createTag(drink, "p", null, null, `${this.getType()}, ${this.size}l`);
     createTag(
@@ -47,22 +48,39 @@ class Drink {
         currency: "EUR",
       })}`
     );
-    const buttons = createTag(drink, "div", null, "drinkDisplay", null);
+    /* const buttons = createTag(drink, "div", null, "drinkDisplay", null);
     createTag(
       buttons,
       "button",
       null,
       `add${this.getCheckString()}`,
       `<i class="fa-solid fa-plus">`
-    );
-    createTag(
-      buttons,
+    ); */
+    const addButton = createTag(
+      drink,
       "button",
       null,
-      `remove${this.getCheckString()}`,
-      `<i class="fa-solid fa-minus">`
+      "addDrinkToCart",
+      `<i class="fa-solid fa-plus">`
     );
+    addButton.dataset.drinkType = this.type;
+    addButton.dataset.drinkSize = this.size.toString();
+
+    const orderDiv = document.getElementById("orderDiv");
+    const totalPrice = document.getElementById("totalPrice");
+
+    addButton.addEventListener("click", () => {
+      cart.addToCart(this);
+      cart.createCartItems(orderDiv as HTMLElement, this);
+      if (totalPrice instanceof HTMLElement) {
+        totalPrice.innerHTML = `Total: ${cart
+          .getTotal()
+          .toFixed(2)
+          .toString()}€`;
+      }
+    });
   }
+
   // todo for later use
   // ageWarning() {
   //   if (this.underage === false) {

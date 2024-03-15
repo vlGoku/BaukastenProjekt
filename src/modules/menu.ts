@@ -100,7 +100,7 @@ function createMenu() {
     }
   });
 
-  /*   // Pasta
+  // Pasta
   const pastaHeading = createTag(choice, "div", null, "pastaHeading", null);
   const pastDiv = createTag(pastaHeading, "h3", null, null, "Pasta");
   const btnPasta = createTag(
@@ -112,14 +112,15 @@ function createMenu() {
   );
   const wrapPasta = createTag(choice, "div", null, "ingredientsPasta", null);
   pasta.createItems(wrapPasta);
-
-  const buttonPasta = createTag(
+  //button pasta
+  const addPastaToCart = createTag(
     choice,
     "button",
-    `pastaToCartBtn"`,
+    "pastaToCartBtn",
     null,
     "Add to cart"
   );
+  addPastaToCart.classList.add("hidden");
 
   wrapPasta.classList.add("hidden");
   wrapPasta.classList.remove("ingredientsPasta");
@@ -133,14 +134,24 @@ function createMenu() {
       wrapPasta.classList.remove("ingredientsPasta");
     }
   });
-  buttonPasta!.addEventListener("click", () => {
+
+  addPastaToCart!.addEventListener("click", () => {
     const display = document.querySelector(".displayItem");
+    const pastaAddOns = document.getElementById("pastaAddOns");
     display?.remove();
-    console.log("zest");
-    cart.addToCart(pasta);
-    pasta.allComponents = [];
+    const newPasta = new Pasta();
+    newPasta.allComponents = pasta.allComponents;
+    newPasta.setPrice(newPasta.calculatePrice());
+    cart.addToCart(newPasta);
+    pastaAddOns?.classList.add("hidden");
     console.log(cart.order);
+    pasta.resetPasta();
     pasta.createItems(wrapPasta);
+    addPastaToCart.classList.add("hidden");
+    cart.createCartItems(orderDiv as HTMLElement, newPasta);
+    if (totalPrice instanceof HTMLElement) {
+      totalPrice.innerHTML = `Total: ${cart.getTotal().toFixed(2).toString()}€`;
+    }
   });
 
   // Salad
@@ -158,6 +169,15 @@ function createMenu() {
   wrapSalad.classList.remove("ingredientsSalad");
   salad.createItems(wrapSalad);
   //button Salad
+  const addSaladToCart = createTag(
+    choice,
+    "button",
+    "saladToCartBtn",
+    null,
+    "Add to cart"
+  );
+  addSaladToCart.classList.add("hidden");
+
   btnSalad.addEventListener("click", () => {
     if (wrapSalad.classList.contains("hidden")) {
       wrapSalad.classList.add("ingredientsSalad");
@@ -167,21 +187,24 @@ function createMenu() {
       wrapSalad.classList.remove("ingredientsSalad");
     }
   });
-  const buttonSalad = createTag(
-    choice,
-    "button",
-    `saladToCartBtn"`,
-    null,
-    "Add to cart"
-  );
-  buttonSalad!.addEventListener("click", () => {
+
+  addSaladToCart!.addEventListener("click", () => {
     const display = document.querySelector(".displayItem");
+    const saladAddOns = document.getElementById("saladAddOns");
     display?.remove();
-    console.log("zest");
-    cart.addToCart(salad);
-    salad.allComponents = [];
+    const newSalad = new Salad();
+    newSalad.allComponents = salad.allComponents;
+    newSalad.setPrice(newSalad.calculatePrice());
+    cart.addToCart(newSalad);
+    saladAddOns?.classList.add("hidden");
     console.log(cart.order);
+    salad.resetSalad();
     salad.createItems(wrapSalad);
+    addSaladToCart.classList.add("hidden");
+    cart.createCartItems(orderDiv as HTMLElement, newSalad);
+    if (totalPrice instanceof HTMLElement) {
+      totalPrice.innerHTML = `Total: ${cart.getTotal().toFixed(2).toString()}€`;
+    }
   });
   // Drinks
   const drinkHeading = createTag(choice, "div", null, "drinkHeading", null);
@@ -199,7 +222,7 @@ function createMenu() {
 
   for (let i = 0; i < drinks.length; i++) {
     let item: Drink = drinks[i] as Drink;
-    item.renderDrink(wrapDrink);
+    item.renderDrink(wrapDrink, cart);
   }
 
   // button Drink
@@ -212,64 +235,7 @@ function createMenu() {
       wrapDrink.classList.remove("drinksList");
     }
   });
-  wrapDrink.addEventListener("click", (e) => {
-    // todo rework
-    let currentTarget = e.target as HTMLButtonElement;
-    if (currentTarget!.matches(".addBeer05")) {
-      cart.addToCart(drinks[0] as Drink);
-    }
-    if (currentTarget!.matches(".removeBeer05")) {
-      cart.removeFromCart(drinks[0] as Drink);
-    }
-    if (currentTarget!.matches(".addBeer033")) {
-      cart.addToCart(drinks[1] as Drink);
-    }
-    if (currentTarget!.matches(".removeBeer033")) {
-      cart.removeFromCart(drinks[1] as Drink);
-    }
-    if (currentTarget!.matches(".addCocaCola05")) {
-      cart.addToCart(drinks[2] as Drink);
-    }
-    if (currentTarget!.matches(".removeCocaCola05")) {
-      cart.removeFromCart(drinks[2] as Drink);
-    }
-    if (currentTarget!.matches(".addCocaCola033")) {
-      cart.addToCart(drinks[3] as Drink);
-    }
-    if (currentTarget!.matches(".removeCocaCola033")) {
-      cart.removeFromCart(drinks[3] as Drink);
-    }
-    if (currentTarget!.matches(".addSprite05")) {
-      cart.addToCart(drinks[4] as Drink);
-    }
-    if (currentTarget!.matches(".removeSprite05")) {
-      cart.removeFromCart(drinks[4] as Drink);
-    }
-    if (currentTarget!.matches(".addSprite033")) {
-      cart.addToCart(drinks[5] as Drink);
-    }
-    if (currentTarget!.matches(".removeSprite033")) {
-      cart.removeFromCart(drinks[5] as Drink);
-    }
-    if (currentTarget!.matches(".addAppleJuice05")) {
-      cart.addToCart(drinks[6] as Drink);
-    }
-    if (currentTarget!.matches(".removeAppleJuice05")) {
-      cart.removeFromCart(drinks[6] as Drink);
-    }
-    if (currentTarget!.matches(".addAppleJuice033")) {
-      cart.addToCart(drinks[7] as Drink);
-    }
-    if (currentTarget!.matches(".removeAppleJuice033")) {
-      cart.removeFromCart(drinks[7] as Drink);
-    }
-    if (currentTarget!.matches(".addMineralWater05")) {
-      cart.addToCart(drinks[8] as Drink);
-    }
-    if (currentTarget!.matches(".removeMineralWater05")) {
-      cart.removeFromCart(drinks[8] as Drink);
-    }
-  }); */
+
   // todo addCart and Warning to the right spaces
 }
 export { createMenu };

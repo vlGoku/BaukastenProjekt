@@ -73,43 +73,44 @@ class Pasta extends Food {
       // todo try to exchange for switch statement
       if (currentTarget!.matches(".baseFusilli")) {
         this.addIngredients("Fusilli");
-        const next = document.getElementById("pastaAddOns");
+        const next = document.getElementById("pastaMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
       if (currentTarget!.matches(".basePenne")) {
         this.addIngredients("Penne");
-        const next = document.getElementById("pastaAddOns");
+        const next = document.getElementById("pastaMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
       if (currentTarget!.matches(".baseFarfalle")) {
         this.addIngredients("Farfalle");
-        const next = document.getElementById("pastaAddOns");
+        const next = document.getElementById("pastaMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
       if (currentTarget!.matches(".baseSpaghetti")) {
         this.addIngredients("Spaghetti");
-        const next = document.getElementById("pastaAddOns");
+        const next = document.getElementById("pastaMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
       if (currentTarget!.matches(".baseRigatoni")) {
         this.addIngredients("Rigatoni");
-        const next = document.getElementById("pastaAddOns");
+        const next = document.getElementById("pastaMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
       if (currentTarget!.matches(".baseTagliatelle")) {
         this.addIngredients("Tagliatelle");
-        const next = document.getElementById("pastaAddOns");
+        const next = document.getElementById("pastaMustHaves");
         next?.classList.remove("hidden");
         base.remove();
       }
-      //console.log(this.allComponents);
+      this.updateItem(parent);
     });
   }
+
   createMustHaves(parent: HTMLElement) {
     const basisNode = createTag(
       parent,
@@ -136,6 +137,42 @@ class Pasta extends Food {
       false
     );
 
+    basisList.addEventListener("click", (e) => {
+      let currentTarget = e.target as HTMLButtonElement;
+
+      if (currentTarget!.matches(".mustTomatoSauce")) {
+        this.addIngredients("Tomato Sauce");
+        const next = document.getElementById("pastaAddOns");
+        next?.classList.remove("hidden");
+        basisNode.remove();
+        const addPastaToCart = document.getElementById("pastaToCartBtn");
+        if (addPastaToCart) {
+          addPastaToCart.classList.remove("hidden");
+        }
+      }
+      if (currentTarget!.matches(".mustCreamSauce")) {
+        this.addIngredients("Cream Sauce");
+        const next = document.getElementById("pastaAddOns");
+        next?.classList.remove("hidden");
+        basisNode.remove();
+        const addPastaToCart = document.getElementById("pastaToCartBtn");
+        if (addPastaToCart) {
+          addPastaToCart.classList.remove("hidden");
+        }
+      }
+      if (currentTarget!.matches(".mustOliveOil")) {
+        this.addIngredients("Olive Oil");
+        const next = document.getElementById("pastaAddOns");
+        next?.classList.remove("hidden");
+        basisNode.remove();
+        const addPastaToCart = document.getElementById("pastaToCartBtn");
+        if (addPastaToCart) {
+          addPastaToCart.classList.remove("hidden");
+        }
+      }
+      this.updateItem(parent);
+    });
+
     let nextSibling = basisList.firstChild?.nextSibling;
     let getNameIndex = 0;
     while (nextSibling !== null) {
@@ -149,23 +186,6 @@ class Pasta extends Food {
     }
 
     // Buttons
-
-    basisList.addEventListener("click", (e) => {
-      let currentTarget = e.target as HTMLButtonElement;
-
-      if (currentTarget!.matches(".mustTomatoSauce")) {
-        this.addIngredients("Tomato Sauce");
-        basisNode.remove();
-      }
-      if (currentTarget!.matches(".mustCreamSauce")) {
-        this.addIngredients("Cream Sauce");
-        basisNode.remove();
-      }
-
-      this.updateItem(parent);
-
-      //console.log(this.allComponents);
-    });
   }
   createAddOns(parent: HTMLElement) {
     const basisNode = createTag(
@@ -199,23 +219,19 @@ class Pasta extends Food {
       const tag = document.createElement("div");
       tag.innerHTML = `<button class="add${this.getAddOns()[
         getNameIndex
-      ].replace(/ /g, "")}"><i class="fa-solid fa-plus"></i></button>
-      <button class="remove${this.getAddOns()[getNameIndex].replace(
-        / /g,
-        ""
-      )}"><i class="fa-solid fa-minus"></i></button>`;
+      ].replace(/ /g, "")}"><i class="fa-solid fa-plus"></i></button>`;
       nextSibling?.appendChild(tag);
       //console.log(nextSibling);
       nextSibling = nextSibling!.nextSibling;
       getNameIndex++;
     }
     // Buttons
-    const button = createTag(basisNode, "button", null, "next_button", "next");
+    /* const button = createTag(basisNode, "button", null, "next_button", "next");
     button.addEventListener("click", () => {
       const next = document.getElementById("pastaMustHaves");
       next?.classList.remove("hidden");
       basisNode.remove();
-    });
+    }); */
     basisList.addEventListener("click", (e) => {
       // TODO simplify later | rework
       let currentTarget = e.target as HTMLButtonElement;
@@ -328,7 +344,13 @@ class Pasta extends Food {
     this.createBase(parent);
     this.createAddOns(parent);
     this.createMustHaves(parent);
-    this.renderItem(parent);
+    //this.renderItem(parent);
+  }
+
+  resetPasta() {
+    this.allComponents = [];
+    let price = this.getPrice();
+    price = 0;
   }
 }
 
