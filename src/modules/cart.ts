@@ -98,7 +98,7 @@ class Cart {
     const deleteItemFromCart = document.querySelector(".buttonDeleteItem");
     deleteItemFromCart?.addEventListener("click", (e) => {
       let currentTarget = e.target as HTMLButtonElement;
-      console.log(currentTarget.parentElement);
+      console.log(currentTarget.parentElement, this.order);
     });
 
     if (element instanceof Pizza) {
